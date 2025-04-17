@@ -13,7 +13,7 @@
 <body class="overflow-y-scroll">
     <header id="header" class="fixed w-full top-0 border-b">
         <div class="container xl:!px-0">
-            <nav class="lg:flex items-center justify-between py-4 z-10 space-y-2 lg:space-y-0">
+            <nav class="lg:flex items-center justify-between py-4 z-10 lg:space-y-0">
                 <div class="flex items-center justify-between w-full">
                     <div class="flex items-center gap-2">
                         <a class="navbar-brand text-2xl leading-none font-bold z-10" href="index.html">TheIlmJourney</a>
@@ -67,14 +67,15 @@
     <main>
         <section>
             <div class="container xl:!px-0">
-                <div class="lg:mt-14 lg:flex flex-row-reverse justify-between pt-[57px] lg:pt-0 space-y-1">
-
-                    <div id="tags"
-                        class="hidden pt-10 w-full max-w-[368px] h-full pl-10 min-h-10 mx-auto space-y-3 select-none">
+                <div class="lg:mt-14 lg:flex flex-row-reverse justify-between pt-[57px] lg:pt-0">
+                    <!-- The ul takes remaining space beside the blog div -->
+                    <ul id="tags"
+                        class="w-full max-w-[680px] lg:flex-1 sticky top-[56px] border-b lg:border-b-0 flex lg:block overflow-auto lg:pt-10 lg:h-full lg:pl-32 lg:min-h-10 mx-auto lg:ml-0 space-x-6 lg:space-x-0 select-none">
                         <!-- Category tags will be dynamically inserted here -->
-                    </div>
+                    </ul>
 
                     <div id="blog" class="w-full max-w-[680px] lg:pt-4 mx-auto lg:ml-0">
+                        <!-- Blog card will be dynamically inserted here -->
                     </div>
                 </div>
             </div>

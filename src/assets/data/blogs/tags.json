@@ -1,0 +1,18 @@
+[
+    {
+        "tagName": "সব",
+        "dataType": "all"
+    },
+    {
+        "tagName": "ইসলাম",
+        "dataType": "islam"
+    },
+    {
+        "tagName": "নামাজ",
+        "dataType": "namaz"
+    },
+    {
+        "tagName": "মাসনুন দু'আ",
+        "dataType": "dowa"
+    }
+]

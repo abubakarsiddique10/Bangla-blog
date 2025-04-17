@@ -9,15 +9,26 @@ async function getBlogData() {
     try {
         loading(true)
         const response = await fetchData(url);
-        allData = response[1]
-        displayBlog(response[1].reverse());
-        displayTag(response[0]);
+        allData = response
+        displayBlog(response.reverse());
         loading(false)
     } catch (error) {
         console.error('Error fetching Namaz Niyat data:', error);
     }
 }
-getBlogData()
+getBlogData();
+
+// Fetch tags data
+async function getTags() {
+    const url = `././assets/data/blogs/tags.json`;
+    try {
+        const response = await fetchData(url);
+        displayTag(response);
+    } catch (error) {
+        console.error(error);
+    }
+}
+getTags()
 
 
 // Display Namaz Niyat data in the UI
@@ -42,7 +53,7 @@ function handleTagClick(event) {
         const dataType = event.target.dataset.type;
         const filterData = dataType === "all"
             ? allData
-            : allData.filter((data) => data.tags === dataType);
+            : allData.filter((data) => data.dataType === dataType);
         displayBlog(filterData);
     }
 }
@@ -60,15 +71,15 @@ const displayTag = (contents) => {
     })
 }
 
+
+
 const createTagElemnt = ({ tagName, dataType }, isActive) => {
-    const a = document.createElement('a');
-    a.href = dataType + '.html';
-    a.className = 'min-w-fit space-y-2 flex-shrink-0 lg:w-full lg:flex items-center lg:space-y-0 lg:space-x-4';
-    a.innerHTML = `
-        <img class="select-none w-8 mx-auto lg:w-7 lg:mx-0" src="./assets/images/banner/${dataType}.png" alt="">
-        <span class="tag_title text-sm font-sans font-medium text-center block lg:text-left">${tagName}</span>
+    const li = document.createElement('li');
+    li.className = 'min-w-fit'
+    li.innerHTML = `
+        <button class="font-medium md:text-base text-left p-2 rounded-md block w-full filter-button cursor-pointer ${isActive ? "active" : ""}" data-type="${dataType}">${tagName}</button>
     `
-    return a;
+    return li
 }
 
 
