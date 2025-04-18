@@ -825,10 +825,6 @@
     border-style: var(--tw-border-style);
     border-width: 0px;
   }
-  .border-t {
-    border-top-style: var(--tw-border-style);
-    border-top-width: 1px;
-  }
   .border-b {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
@@ -848,6 +844,9 @@
   .\!px-0 {
     padding-inline: calc(var(--spacing) * 0) !important;
   }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
   }
@@ -866,6 +865,9 @@
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
@@ -875,14 +877,29 @@
   .py-\[6px\] {
     padding-block: 6px;
   }
+  .pt-1 {
+    padding-top: calc(var(--spacing) * 1);
+  }
+  .pt-2 {
+    padding-top: calc(var(--spacing) * 2);
+  }
   .pt-3 {
     padding-top: calc(var(--spacing) * 3);
+  }
+  .pt-4 {
+    padding-top: calc(var(--spacing) * 4);
   }
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
   }
   .pt-10 {
     padding-top: calc(var(--spacing) * 10);
+  }
+  .pt-\[0px\] {
+    padding-top: 0px;
+  }
+  .pt-\[1px\] {
+    padding-top: 1px;
   }
   .pt-\[57px\] {
     padding-top: 57px;
@@ -1168,6 +1185,11 @@
       border-left-width: 1px;
     }
   }
+  .lg\:p-2 {
+    @media (width >= 64rem) {
+      padding: calc(var(--spacing) * 2);
+    }
+  }
   .lg\:px-0 {
     @media (width >= 64rem) {
       padding-inline: calc(var(--spacing) * 0);
@@ -1176,6 +1198,11 @@
   .lg\:py-0 {
     @media (width >= 64rem) {
       padding-block: calc(var(--spacing) * 0);
+    }
+  }
+  .lg\:py-6 {
+    @media (width >= 64rem) {
+      padding-block: calc(var(--spacing) * 6);
     }
   }
   .lg\:pt-0 {

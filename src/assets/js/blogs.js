@@ -2,7 +2,9 @@ import { fetchData } from "./common.js";
 import { loading } from "./main.js"
 
 const queryParams = new URLSearchParams(window.location.search);
-const blogId = queryParams.get('id');
+const slug = queryParams.get('topic');
+const blogId = slug.split('-').pop();
+
 // Fetch Namaz Niyat data
 async function getBlogData() {
     const url = `././assets/data/blogs/blogs.json`;

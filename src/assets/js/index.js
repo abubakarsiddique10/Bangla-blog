@@ -1,5 +1,5 @@
 import { fetchData } from "./common.js";
-import { createArticleCard, setupCategoryClickListener } from "./components.js";
+import { createArticleCard } from "./components.js";
 import { loading } from './main.js'
 
 let allData = null;
@@ -39,7 +39,7 @@ const displayBlog = (contents) => {
         const createBLogCard = createArticleCard(content);
         blogContainer.appendChild(createBLogCard);
     });
-    setupCategoryClickListener()
+    /* setupCategoryClickListener() */
 }
 
 
@@ -77,10 +77,19 @@ const createTagElemnt = ({ tagName, dataType }, isActive) => {
     const li = document.createElement('li');
     li.className = 'min-w-fit'
     li.innerHTML = `
-        <button class="font-medium md:text-base text-left p-2 rounded-md block w-full filter-button cursor-pointer ${isActive ? "active" : ""}" data-type="${dataType}">${tagName}</button>
+        <button class="font-medium md:text-base text-left px-2 py-3 lg:p-2 rounded-md block w-full filter-button cursor-pointer ${isActive ? "active" : ""}" data-type="${dataType}">${tagName}</button>
     `
     return li
 }
 
+/* function generateHexId(length = 12) {
+    return [...Array(length)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+} */
 
+function dateRandomId() {
+    return Date.now().toString(16) + Math.floor(Math.random() * 1000).toString(16);
+}
+
+
+const id = dateRandomId();
 

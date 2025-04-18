@@ -1,9 +1,11 @@
 // Create blog article card element
 const createArticleCard = ({ id, title, subtitle, blogImg, publishedDate, dataType }) => {
     const cardElement = document.createElement('article');
+    const articleLink = document.createElement('a');
+    articleLink.href = `blogs.html?topic=${title.split(' ').join('-')}-${id}`
     cardElement.className = 'blog__card border-b py-6 cursor-pointer select-none';
-    cardElement.setAttribute('data-id', `${id}`);
-    cardElement.setAttribute('data-type', `${dataType}`);
+    // cardElement.setAttribute('data-id', `${id}`);
+    // cardElement.setAttribute('data-type', `${dataType}`);
 
     // Wrapper div (flex row)
     const wrapper = document.createElement('div');
@@ -53,22 +55,23 @@ const createArticleCard = ({ id, title, subtitle, blogImg, publishedDate, dataTy
     // Assemble card
     cardElement.appendChild(wrapper);
     cardElement.appendChild(dateDiv);
+    articleLink.appendChild(cardElement)
 
-    return cardElement;
+    return articleLink;
 };
 
 
-const setupCategoryClickListener = () => {
+/* const setupCategoryClickListener = () => {
     // Use event delegation on a parent element that exists when the page loads
     const blogs = document.getElementById('blog');
     blogs.addEventListener('click', (event) => {
         const blogCard = event.target.closest('.blog__card');
         if (blogCard) {
             const blogId = blogCard.dataset.id;
-            window.location.href = "blogs.html?id=" + blogId;
+            window.location.href = "blogs.html?topic=" + blogId;
         }
     })
-}
+} */
 
 // export all components function
-export { createArticleCard, setupCategoryClickListener }
+export { createArticleCard }
