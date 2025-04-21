@@ -9,8 +9,11 @@ async function getBlogData() {
     try {
         loading(true)
         const response = await fetchData(url);
-        allData = response
-        displayBlog(response.reverse());
+        const blogArray = response.reduce((acc, curr) => acc.concat(curr.blogs), []);
+        // Sort descending (newest to oldest)
+        const sortedArray = blogArray.sort((a, b) => b.createdAt - a.createdAt);
+        displayBlog(sortedArray);
+        allData = blogArray
         loading(false)
     } catch (error) {
         console.error('Error fetching Namaz Niyat data:', error);
@@ -53,7 +56,7 @@ function handleTagClick(event) {
         const dataType = event.target.dataset.type;
         const filterData = dataType === "all"
             ? allData
-            : allData.filter((data) => data.dataType === dataType);
+            : allData.filter((data) => data.tag === dataType);
         displayBlog(filterData);
     }
 }
@@ -72,24 +75,22 @@ const displayTag = (contents) => {
 }
 
 
-
 const createTagElemnt = ({ tagName, dataType }, isActive) => {
     const li = document.createElement('li');
     li.className = 'min-w-fit'
     li.innerHTML = `
-        <button class="font-medium md:text-base text-left px-2 py-3 lg:p-2 rounded-md block w-full filter-button cursor-pointer ${isActive ? "active" : ""}" data-type="${dataType}">${tagName}</button>
+        <button class="font-medium text-[15px] md:text-base text-left px-2 py-3 lg:p-2 rounded-md block w-full filter-button cursor-pointer ${isActive ? "active" : ""}" data-type="${dataType}">${tagName}</button>
     `
     return li
 }
 
-/* function generateHexId(length = 12) {
-    return [...Array(length)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
-} */
 
+// id generate function
 function dateRandomId() {
     return Date.now().toString(16) + Math.floor(Math.random() * 1000).toString(16);
 }
-
-
 const id = dateRandomId();
+
+// date generate function
+const timestamp = Date.now();
 

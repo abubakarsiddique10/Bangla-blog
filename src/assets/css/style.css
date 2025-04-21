@@ -322,6 +322,6 @@ body {
     .active {
         /* background-color: var(--active-bg-color); */
         border-bottom: none;
-        background: var(--active-bg-color)
+        background: var(--active-bg-color);
     }
 }

@@ -1,9 +1,10 @@
+import { convertToBanglaDate } from "./common.js";
 // Create blog article card element
-const createArticleCard = ({ id, title, subtitle, blogImg, publishedDate, dataType }) => {
+const createArticleCard = ({ id, title, subtitle, blogImg, createdAt, }) => {
     const cardElement = document.createElement('article');
     const articleLink = document.createElement('a');
     articleLink.href = `blogs.html?topic=${title.split(' ').join('-')}-${id}`
-    cardElement.className = 'blog__card border-b py-6 cursor-pointer select-none';
+    cardElement.className = 'blog__card py-4 cursor-pointer select-none';
     // cardElement.setAttribute('data-id', `${id}`);
     // cardElement.setAttribute('data-type', `${dataType}`);
 
@@ -42,18 +43,33 @@ const createArticleCard = ({ id, title, subtitle, blogImg, publishedDate, dataTy
     wrapper.appendChild(contentDiv);
     wrapper.appendChild(imageWrapper);
 
+    // Tag Section
+    /* const tagDiv = document.createElement('div');
+    tagDiv.className = "mt-2 flex gap-2"
+    const tagSpan = document.createElement('span');
+    const tagSpan2 = document.createElement('span');
+    tagSpan.className = "text-sm bg-[#F1F1F1] py-0.5 px-2 rounded"
+    tagSpan2.className = "text-sm bg-[#F1F1F1] py-0.5 px-2 rounded"
+    tagSpan.innerText = "ইসলাম";
+    tagSpan2.innerText = "ইসলাম";
+    tagDiv.append(tagSpan, tagSpan2); */
+
+
+
+
     // Date Section
     const dateDiv = document.createElement('div');
     dateDiv.className = 'date mt-2';
 
     const dateSpan = document.createElement('span');
     dateSpan.className = 'published_data text-sm';
-    dateSpan.textContent = publishedDate;
+    dateSpan.textContent = convertToBanglaDate(createdAt);
 
     dateDiv.appendChild(dateSpan);
 
     // Assemble card
     cardElement.appendChild(wrapper);
+    // cardElement.appendChild(tagDiv)
     cardElement.appendChild(dateDiv);
     articleLink.appendChild(cardElement)
 
